@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DENTAL ADVISOR — For Clinicians</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#203552;--navy-mid:#2e4a6e;--navy-light:#3d6491;
+  --orange:#E4762E;--orange-light:#E87535;--gold:#F8C569;
+  --charcoal:#55565A;--cream:#F7F4EF;--white:#FFFFFF;
+  --border:#DDD8D0;--text:#1A1A1A;--text-mid:#4A4A4A;--text-light:#787878;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+.topbar{background:var(--navy);padding:9px 48px;display:flex;justify-content:space-between;align-items:center;}
+.topbar-left{font-size:11.5px;color:rgba(255,255,255,0.55);letter-spacing:.06em;}
+.topbar-right{display:flex;gap:20px;align-items:center;}
+.topbar-right a{font-size:11.5px;color:rgba(255,255,255,0.7);text-decoration:none;}
+.topbar-right a:hover{color:var(--gold);}
+.topbar-cta{background:var(--orange);color:var(--white)!important;padding:5px 14px;border-radius:2px;font-weight:600!important;}
+nav{background:var(--white);padding:0 48px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,0.07);}
+.nav-logo{padding:16px 0;}
+.nav-logo .brand{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--navy);letter-spacing:.06em;text-transform:uppercase;}
+.nav-logo .sub{display:block;font-size:8.5px;color:var(--orange);letter-spacing:.22em;text-transform:uppercase;margin-top:2px;}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{display:block;padding:22px 14px;font-size:12.5px;font-weight:500;color:var(--text-mid);text-decoration:none;letter-spacing:.04em;text-transform:uppercase;border-bottom:3px solid transparent;transition:.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--navy);border-bottom-color:var(--orange);}
+.nav-links a.active{font-weight:600;}
+.nav-right{display:flex;gap:10px;}
+.btn-outline{padding:8px 18px;border:1.5px solid var(--navy);color:var(--navy);font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:.2s;}
+.btn-outline:hover{background:var(--navy);color:var(--white);}
+.btn-solid{padding:8px 18px;background:var(--orange);color:var(--white);font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;border-radius:2px;}
+.search-bar-wrap{background:var(--cream);border-bottom:1px solid var(--border);padding:14px 48px;display:flex;justify-content:center;}
+.search-bar-inner{display:flex;align-items:stretch;height:44px;width:100%;max-width:720px;box-shadow:0 2px 12px rgba(32,53,82,0.08);border-radius:3px;overflow:hidden;}
+.search-input-wrap{display:flex;align-items:center;flex:1;background:#fff;border:1.5px solid var(--border);border-right:none;padding:0 16px;gap:10px;}
+.search-icon{color:#C0B8AE;font-size:15px;flex-shrink:0;}
+.search-input{flex:1;border:none;outline:none;font-size:13.5px;font-family:'DM Sans',sans-serif;color:var(--text);background:transparent;min-width:0;}
+.search-input::placeholder{color:#B0A898;}
+.search-select{border:1.5px solid var(--border);border-right:none;background:#fff;padding:0 32px 0 14px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--charcoal);outline:none;cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23787878' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;min-width:160px;border-left:1px solid var(--border);flex-shrink:0;}
+.search-btn{padding:0 28px;background:var(--orange);border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;flex-shrink:0;}
+.search-btn:hover{background:var(--orange-light);}
+footer{background:#182840;color:rgba(255,255,255,.55);padding:48px 48px 24px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px;}
+.footer-brand .brand-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;}
+.footer-brand .brand-sub{font-size:9.5px;color:var(--orange);letter-spacing:.2em;text-transform:uppercase;margin-top:3px;margin-bottom:16px;}
+.footer-brand p{font-size:12.5px;line-height:1.7;max-width:250px;margin-bottom:14px;}
+.footer-contact{font-size:12.5px;line-height:2;}
+.footer-contact a{color:rgba(255,255,255,.55);text-decoration:none;}
+.footer-col h4{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#fff;margin-bottom:16px;}
+.footer-col a{display:block;font-size:12.5px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:8px;}
+.footer-col a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:18px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{color:rgba(255,255,255,.35);text-decoration:none;}
+.chat-bubble{position:fixed;bottom:28px;right:28px;z-index:999;}
+.chat-btn{width:56px;height:56px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 24px rgba(228,118,46,.4);border:none;font-size:22px;}
+.chat-tip{position:absolute;bottom:64px;right:0;background:var(--navy);color:#fff;font-size:11.5px;font-weight:600;padding:7px 13px;border-radius:3px;white-space:nowrap;opacity:0;transition:.2s;pointer-events:none;}
+.chat-bubble:hover .chat-tip{opacity:1;}
+.chat-tip::after{content:'';position:absolute;top:100%;right:18px;border:5px solid transparent;border-top-color:var(--navy);}
+
+/* Hero — warm, welcoming, cream-based */
+.clin-hero{background:var(--white);padding:80px 48px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;border-bottom:1px solid var(--border);}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.hero-eyebrow-line{width:28px;height:1px;background:var(--orange);}
+.hero-eyebrow span{font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);}
+.clin-hero h1{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--navy);line-height:1.12;margin-bottom:18px;}
+.clin-hero h1 em{color:var(--orange);font-style:normal;}
+.clin-hero p{font-size:15.5px;color:var(--text-mid);line-height:1.8;margin-bottom:32px;}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+.hero-btn-primary{display:inline-block;padding:14px 32px;background:var(--navy);color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;}
+.hero-btn-secondary{display:inline-block;padding:14px 32px;border:1.5px solid var(--navy);color:var(--navy);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;}
+.hero-card-stack{display:flex;flex-direction:column;gap:14px;}
+.hero-card{background:var(--cream);border:1px solid var(--border);border-radius:4px;padding:22px 24px;display:flex;gap:16px;align-items:flex-start;transition:.2s;cursor:pointer;text-decoration:none;}
+.hero-card:hover{border-color:var(--orange);background:#fff;box-shadow:0 4px 20px rgba(32,53,82,0.08);}
+.hero-card-icon{font-size:24px;flex-shrink:0;margin-top:2px;}
+.hero-card-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.hero-card-desc{font-size:13px;color:var(--text-light);line-height:1.5;}
+.hero-card-link{font-size:12px;font-weight:700;color:var(--orange);margin-top:6px;display:block;}
+/* What's available */
+.available-section{background:var(--cream);padding:80px 48px;}
+.section-label{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.section-line{width:28px;height:2px;background:var(--orange);}
+.section-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);}
+.section-title{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--navy);margin-bottom:14px;line-height:1.2;}
+.section-desc{font-size:15px;color:var(--text-light);line-height:1.75;max-width:620px;margin-bottom:48px;}
+.content-hub{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.hub-card{background:var(--white);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:.2s;text-decoration:none;display:flex;flex-direction:column;}
+.hub-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(32,53,82,0.12);border-color:transparent;}
+.hub-card-top{height:120px;display:flex;align-items:center;justify-content:center;position:relative;}
+.hub-card-icon-large{font-size:40px;}
+.hub-card-count{position:absolute;top:12px;right:12px;background:var(--orange);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;}
+.hub-card-body{padding:20px;flex:1;display:flex;flex-direction:column;}
+.hub-card-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--navy);margin-bottom:8px;}
+.hub-card-desc{font-size:13px;color:var(--text-light);line-height:1.6;flex:1;margin-bottom:14px;}
+.hub-card-cta{font-size:12px;font-weight:700;color:var(--orange);letter-spacing:.06em;text-transform:uppercase;}
+/* Subscription tiers */
+.sub-section{background:var(--white);padding:80px 48px;}
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+.tier-card{border:1.5px solid var(--border);border-radius:4px;padding:32px 28px;position:relative;transition:.2s;}
+.tier-card.featured{border-color:var(--orange);box-shadow:0 8px 32px rgba(228,118,46,0.15);}
+.tier-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 14px;border-radius:10px;white-space:nowrap;}
+.tier-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.tier-price{font-size:13px;color:var(--text-light);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+.tier-price strong{font-size:28px;font-weight:700;color:var(--navy);font-family:'Playfair Display',serif;}
+.tier-features{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+.tier-feature{display:flex;gap:10px;font-size:13.5px;color:var(--text-mid);line-height:1.4;}
+.tier-feature .check{color:#2a7a4a;font-weight:700;flex-shrink:0;}
+.tier-feature .cross{color:#c0392b;font-weight:700;flex-shrink:0;}
+.tier-btn{display:block;width:100%;padding:12px;text-align:center;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.tier-btn-primary{background:var(--orange);color:#fff;}
+.tier-btn-secondary{background:transparent;border:1.5px solid var(--navy);color:var(--navy);}
+/* How to use */
+.howto-section{background:var(--cream);padding:80px 48px;}
+.howto-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px;}
+.howto-group h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--orange);}
+.howto-steps{display:flex;flex-direction:column;gap:0;}
+.howto-step{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);}
+.howto-step:last-child{border-bottom:none;}
+.step-num-small{width:28px;height:28px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;margin-top:1px;}
+.step-text{font-size:13.5px;color:var(--text-mid);line-height:1.6;}
+.step-text strong{color:var(--navy);}
+/* Become an evaluator */
+.evaluator-section{background:var(--navy);padding:80px 48px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.eval-left h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:16px;margin-top:12px;}
+.eval-left p{font-size:15px;color:rgba(255,255,255,0.7);line-height:1.75;margin-bottom:28px;}
+.eval-perks{display:flex;flex-direction:column;gap:12px;margin-bottom:32px;}
+.eval-perk{display:flex;gap:12px;font-size:14px;color:rgba(255,255,255,0.8);line-height:1.5;}
+.perk-check{width:22px;height:22px;background:var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;}
+.eval-form{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:36px;}
+.eval-form h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:6px;}
+.eval-form .sub{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:24px;}
+.form-group{margin-bottom:14px;}
+.form-label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:5px;}
+.form-input,.form-select-input{width:100%;padding:11px 14px;border:1.5px solid rgba(255,255,255,0.15);border-radius:2px;font-size:13.5px;font-family:'DM Sans',sans-serif;color:#fff;outline:none;background:rgba(255,255,255,0.08);transition:.2s;}
+.form-input::placeholder{color:rgba(255,255,255,0.3);}
+.form-input:focus,.form-select-input:focus{border-color:var(--gold);}
+.form-select-input{color:rgba(255,255,255,0.7);}
+.form-select-input option{background:#203552;color:#fff;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-submit{width:100%;padding:13px;background:var(--orange);color:#fff;border:none;border-radius:2px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:8px;}
+.form-submit:hover{background:var(--orange-light);}
+.form-privacy{font-size:11px;color:rgba(255,255,255,0.35);text-align:center;margin-top:10px;}
+/* CE + newsletter */
+.bottom-section{background:var(--white);padding:80px 48px;display:grid;grid-template-columns:1fr 1fr;gap:64px;}
+.nl-form-card{background:var(--cream);border:1px solid var(--border);border-radius:4px;padding:36px;}
+.nl-form-card h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.nl-form-card .sub{font-size:13px;color:var(--text-light);margin-bottom:22px;}
+.nl-input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:2px;font-size:13.5px;font-family:'DM Sans',sans-serif;color:var(--text);outline:none;margin-bottom:12px;}
+.nl-input:focus{border-color:var(--orange);}
+.nl-submit{width:100%;padding:12px;background:var(--navy);color:#fff;border:none;border-radius:2px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif;cursor:pointer;}
+.ce-block h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:10px;margin-top:14px;}
+.ce-block p{font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:24px;}
+.ce-options{display:flex;flex-direction:column;gap:10px;}
+.ce-option{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--cream);border:1px solid var(--border);border-radius:3px;text-decoration:none;transition:.2s;}
+.ce-option:hover{border-color:var(--orange);background:#fff;}
+.ce-option-name{font-size:14px;font-weight:600;color:var(--navy);}
+.ce-option-badge{font-size:11px;font-weight:700;background:var(--orange);color:#fff;padding:3px 10px;border-radius:10px;}
+
+.search-bar-wrap.is-sticky, .search-wrap.is-sticky {
+  position: sticky !important;
+  top: 65px !important;
+  z-index: 200 !important;
+  box-shadow: 0 4px 20px rgba(32,53,82,0.12) !important;
+}
+
+/* ═══════════════════════════════════
+   MOBILE RESPONSIVE STYLES
+   ═══════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Topbar */
+  .topbar { padding: 8px 16px; flex-direction: column; gap: 6px; }
+  .topbar-left { display: none; }
+  .topbar-right { gap: 12px; flex-wrap: wrap; justify-content: center; }
+  /* Nav */
+  nav { padding: 0 16px; position: sticky; top: 0; z-index: 300; }
+  .nav-links, .nav-right { display: none; }
+  .nav-logo { padding: 14px 0; }
+  .nav-logo .brand { font-size: 18px; }
+  nav::after { content: '☰'; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 20px; color: var(--navy); cursor: pointer; }
+  /* Search */
+  .search-bar-wrap, .search-wrap { padding: 10px 16px; }
+  .search-bar-inner, .search-inner { flex-direction: column; height: auto; gap: 0; border-radius: 4px; }
+  .search-input-wrap, .search-field { border-right: 1.5px solid var(--border) !important; border-bottom: none; border-radius: 4px 4px 0 0; height: 44px; }
+  .search-select, .search-scope { border-bottom: none; border-radius: 0; height: 40px; min-width: unset; width: 100%; border-right: 1.5px solid var(--border) !important; }
+  .search-btn, .search-go { height: 42px; border-radius: 0 0 4px 4px; }
+  /* Hero */
+  .page-hero img, .hero img, .hero-img { height: 220px; object-position: center 20%; }
+  .page-hero-overlay, .hero-overlay, .hero-inner { padding: 0 20px; }
+  .hero-h1, .hero-text .hero-h1 { font-size: 26px; }
+  .hero-desc { font-size: 13px; }
+  .hero-ctas, .hero-btns { flex-direction: column; gap: 10px; }
+  .hero-btn-primary, .hero-btn-secondary, .hero-btn-a, .hero-btn-b { text-align: center; }
+  /* Sections */
+  section, .section { padding: 40px 16px !important; }
+  /* Grids → single column */
+  .card-grid.cols3, .card-grid.cols4, .card-grid.cols2,
+  .content-hub, .tier-grid, .why-grid, .team-grid,
+  .howto-grid, .two-col, .footer-grid,
+  .prod-hero-grid, .prod-body, .page-body { 
+    grid-template-columns: 1fr !important; gap: 16px !important; 
+  }
+  .two-col, .benefits-section, .contact-section, .nl-inner,
+  .mfr-hero, .clin-hero, .evaluator-section, .bottom-section,
+  .newsletter-inner { 
+    grid-template-columns: 1fr !important; gap: 24px !important; 
+  }
+  /* Sidebar → below content */
+  .prod-sidebar, .sidebar, .body-right { position: static !important; top: auto !important; }
+  /* Cards */
+  .cards-grid { grid-template-columns: 1fr !important; }
+  /* Product hero */
+  .prod-hero { padding: 24px 16px 0; }
+  .prod-title { font-size: 24px; }
+  .rating-block { flex-wrap: wrap; gap: 12px; padding: 14px; }
+  .r-divider { display: none; }
+  /* Sticky bar */
+  .sticky-bar, .sticky-cta-bar { padding: 10px 16px; flex-direction: column; gap: 10px; }
+  .sb-btns, .sticky-cta-btns { flex-direction: row; flex-wrap: wrap; gap: 7px; }
+  .sb-product { font-size: 13px; max-width: 100%; white-space: normal; }
+  .sb-btn { font-size: 11px; padding: 8px 12px; }
+  /* Breadcrumb */
+  .breadcrumb { padding: 10px 16px; font-size: 11px; }
+  /* Content sections */
+  .eval-stats { grid-template-columns: repeat(3,1fr); }
+  .eval-grid { grid-template-columns: 1fr; }
+  .related-grid { grid-template-columns: 1fr; }
+  /* Process steps */
+  .process-steps { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .process-steps::before { display: none; }
+  /* Footer */
+  footer { padding: 32px 16px 80px; }
+  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .footer-links { gap: 12px; }
+  /* Evaluations redesign */
+  .page-body { grid-template-columns: 1fr !important; }
+  .sidebar { display: none; }
+  /* Search dock on evals */
+  .search-dock { padding: 0 16px; }
+  .search-dock-inner { height: auto; flex-direction: column; }
+  .filter-group { flex-wrap: wrap; }
+  .filter-select { min-width: 140px; border-right: 1px solid rgba(255,255,255,0.12) !important; }
+  /* Awards */
+  .award-medal-card { padding: 20px 14px; }
+  /* Hero chips */
+  .hero-chips { display: none; }
+  /* Types split */
+  .types-section { grid-template-columns: 1fr !important; }
+  /* Test grid */
+  .test-grid { grid-template-columns: 1fr 1fr !important; }
+  /* Submit banner */
+  .submit-cta-inner, .submit-banner { grid-template-columns: 1fr !important; }
+  /* Chat */
+  .chat-bubble { bottom: 90px; right: 14px; }
+  .chat-btn { width: 48px; height: 48px; font-size: 19px; }
+  /* Padding fixes */
+  .prod-body { padding: 20px 16px 80px !important; }
+  .reports-section, .available-section, .sub-section,
+  .howto-section, .evaluator-section, .bottom-section,
+  .faq-section, .why-section, .process-section,
+  .benefits-section, .eligibility-section, .contact-section,
+  .cta-section, .submit-cta, .test-section, .reports-section { padding: 40px 16px !important; }
+  .newsletter, .nl-inner { padding: 40px 16px !important; }
+  /* FAQ */
+  .faq-grid, .elig-grid { grid-template-columns: 1fr !important; }
+  /* Edu tabs */
+  .edu-tabs { flex-wrap: wrap; gap: 0; }
+  .edu-tab { padding: 10px 12px; font-size: 12px; }
+  /* Mfr hero stat grid */
+  .hero-stat-grid { grid-template-columns: 1fr 1fr; }
+  /* Content hub */
+  .content-hub { grid-template-columns: 1fr 1fr !important; }
+  /* Related grid */
+  .rel-footer { flex-wrap: wrap; }
+}
+@media (max-width: 480px) {
+  .eval-stats { grid-template-columns: 1fr 1fr; }
+  .content-hub { grid-template-columns: 1fr !important; }
+  .footer-grid { grid-template-columns: 1fr !important; }
+  .test-grid { grid-template-columns: 1fr !important; }
+  .hero-stat-grid { grid-template-columns: 1fr; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .hero-btn-primary, .hero-btn-secondary { width: 100%; text-align: center; }
+}
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span class="topbar-left">Independent Dental Research Since 1983 · Ann Arbor, Michigan</span>
+  <div class="topbar-right">
+    <a href="#">Contact</a><a href="#">Subscribe</a><a href="#">My Account</a>
+    <a href="#" class="topbar-cta">Try a Product</a>
+  </div>
+</div>
+<nav>
+  <div class="nav-logo"><span class="brand">Dental Advisor</span><span class="sub">Independent Research &amp; Evaluations</span></div>
+  <ul class="nav-links"><li><a href="#">Publication</a></li><li><a href="#">Clinical Evaluations</a></li><li><a href="#">Research</a></li><li><a href="#">Awards</a></li><li><a href="#">Education</a></li><li><a href="#"class="active">About Us</a></li></ul>
+  <div class="nav-right"><a href="#" class="btn-outline">Log In</a><a href="#" class="btn-solid">Subscribe</a></div>
+</nav>
+<div class="search-bar-wrap" id="searchBar">
+  <div class="search-bar-inner">
+    <div class="search-input-wrap"><span class="search-icon">⌕</span><input type="text" placeholder="Search evaluations, research, awards, publications…" class="search-input"></div>
+    <select class="search-select"><option>All Sections</option><option>Clinical Evaluations</option><option>Research</option><option>Publication</option><option>Awards</option><option>Education</option></select>
+    <button class="search-btn">Search →</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="clin-hero">
+  <div>
+    <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><span>For Dental Professionals</span></div>
+    <h1>Research You Can<br>Actually <em>Trust.</em></h1>
+    <p>DENTAL ADVISOR exists for clinicians. Everything we publish — every evaluation, every research report, every award — is designed to help you make better product decisions with confidence, without having to wonder who's funding the findings.</p>
+    <div class="hero-ctas">
+      <a href="#content" class="hero-btn-primary">Explore Our Content →</a>
+      <a href="#subscribe" class="hero-btn-secondary">Subscribe for Full Access</a>
+    </div>
+  </div>
+  <div class="hero-card-stack">
+    <a href="#" class="hero-card"><span class="hero-card-icon">🔬</span><div><div class="hero-card-title">Find a Product Evaluation</div><div class="hero-card-desc">Search 1,000+ independent evaluations by product name, category, company, or rating.</div><span class="hero-card-link">Browse Clinical Evaluations →</span></div></a><a href="#" class="hero-card"><span class="hero-card-icon">📰</span><div><div class="hero-card-title">Read the Latest Publication</div><div class="hero-card-desc">Each issue focuses on a specific clinical topic with evaluations, research, and insights.</div><span class="hero-card-link">View Latest Issue →</span></div></a><a href="#" class="hero-card"><span class="hero-card-icon">🎓</span><div><div class="hero-card-title">Earn CE Credits</div><div class="hero-card-desc">Accredited webinars, eBooks, podcasts, and case reports — all grounded in DA research.</div><span class="hero-card-link">Browse Education →</span></div></a><a href="#" class="hero-card"><span class="hero-card-icon">🏆</span><div><div class="hero-card-title">Check Award Winners</div><div class="hero-card-desc">Products that earned a DENTAL ADVISOR award designation — vetted, not sponsored.</div><span class="hero-card-link">See 2026 Winners →</span></div></a>
+  </div>
+</div>
+
+<!-- WHAT'S AVAILABLE -->
+<div class="available-section" id="content">
+  <div class="section-label"><div class="section-line"></div><span class="section-eyebrow">What's Here for You</span></div>
+  <h2 class="section-title">Your Full Clinical Research Hub</h2>
+  <p class="section-desc">DENTAL ADVISOR is more than a publication. It's a searchable, growing library of independent clinical intelligence — built for dental professionals, maintained by the same team since 1983.</p>
+  <div class="content-hub">
+    <a href="#" class="hub-card"><div class="hub-card-top" style="background:linear-gradient(135deg,#203552,#2e4a6e);"><span class="hub-card-icon-large">🔬</span><span class="hub-card-count">1,000+ Products</span></div><div class="hub-card-body"><div class="hub-card-title">Clinical Evaluations</div><p class="hub-card-desc">Independent ratings for dental products across every category — conducted by practicing clinicians under real-world conditions.</p><span class="hub-card-cta">Browse Clinical Evaluations →</span></div></a><a href="#" class="hub-card"><div class="hub-card-top" style="background:linear-gradient(135deg,#1a2d44,#203552);"><span class="hub-card-icon-large">🧪</span><span class="hub-card-count">200+ Reports</span></div><div class="hub-card-body"><div class="hub-card-title">Research Reports</div><p class="hub-card-desc">In vitro laboratory testing across material properties: bond strength, radiopacity, wear resistance, and more.</p><span class="hub-card-cta">Browse Research Reports →</span></div></a><a href="#" class="hub-card"><div class="hub-card-top" style="background:linear-gradient(135deg,#2e4a6e,#1a2d44);"><span class="hub-card-icon-large">📰</span><span class="hub-card-count">40 Years of Issues</span></div><div class="hub-card-body"><div class="hub-card-title">Publications</div><p class="hub-card-desc">Six issues per year, each focused on a specific clinical topic with evaluations and expert insights.</p><span class="hub-card-cta">Browse Publications →</span></div></a><a href="#" class="hub-card"><div class="hub-card-top" style="background:linear-gradient(135deg,#1a3a20,#1f4a2a);"><span class="hub-card-icon-large">🏆</span><span class="hub-card-count">Annual Awards</span></div><div class="hub-card-body"><div class="hub-card-title">Awards</div><p class="hub-card-desc">Products that achieved exceptional ratings receive DENTAL ADVISOR award designations — by performance, not purchase.</p><span class="hub-card-cta">Browse Awards →</span></div></a><a href="#" class="hub-card"><div class="hub-card-top" style="background:linear-gradient(135deg,#2a1a10,#3a2a18);"><span class="hub-card-icon-large">📚</span><span class="hub-card-count">50+ eBooks</span></div><div class="hub-card-body"><div class="hub-card-title">eBooks</div><p class="hub-card-desc">Topic-focused educational resources covering key areas of dentistry — free with subscription.</p><span class="hub-card-cta">Browse eBooks →</span></div></a><a href="#" class="hub-card"><div class="hub-card-top" style="background:linear-gradient(135deg,#1a1a30,#2a2a4a);"><span class="hub-card-icon-large">🎓</span><span class="hub-card-count">1 CE Credit Each</span></div><div class="hub-card-body"><div class="hub-card-title">CE Webinars &amp; Events</div><p class="hub-card-desc">Accredited continuing education opportunities — online webinars and the Lab to Lecture live event series.</p><span class="hub-card-cta">Browse CE Webinars &amp; Events →</span></div></a>
+  </div>
+</div>
+
+<!-- SUBSCRIPTION TIERS -->
+<div class="sub-section" id="subscribe">
+  <div class="section-label"><div class="section-line"></div><span class="section-eyebrow">Access Levels</span></div>
+  <h2 class="section-title">Free Access vs. Full Subscription</h2>
+  <p class="section-desc">Some content is free for everyone. Full evaluation text, premium research reports, and our complete archive require a subscription — the same one that keeps us independent from manufacturers.</p>
+  <div class="tier-grid">
+    <div class="tier-card">
+      <div class="tier-name">Free</div>
+      <div class="tier-price"><strong>$0</strong> / always</div>
+      <div class="tier-features">
+        <div class="tier-feature"><span class="check">✓</span>Product ratings &amp; award status</div><div class="tier-feature"><span class="check">✓</span>Company &amp; category listings</div><div class="tier-feature"><span class="check">✓</span>Publication summaries</div><div class="tier-feature"><span class="check">✓</span>Education previews &amp; CE info</div><div class="tier-feature"><span class="check">✓</span>eNewsletter subscription</div><div class="tier-feature"><span class="cross">–</span>Full evaluation text &amp; methodology</div><div class="tier-feature"><span class="cross">–</span>Laboratory research report data</div><div class="tier-feature"><span class="cross">–</span>Premium archive access</div><div class="tier-feature"><span class="cross">–</span>eBook downloads</div><div class="tier-feature"><span class="cross">–</span>Priority webinar registration</div>
+      </div>
+      <a href="#" class="tier-btn tier-btn-secondary">Create Free Account</a>
+    </div>
+    <div class="tier-card featured">
+      <div class="tier-badge">Most Popular</div>
+      <div class="tier-name">Digital Subscriber</div>
+      <div class="tier-price"><strong>$99</strong> / year</div>
+      <div class="tier-features">
+        <div class="tier-feature"><span class="check">✓</span>Everything in Free</div><div class="tier-feature"><span class="check">✓</span>Full clinical evaluation text</div><div class="tier-feature"><span class="check">✓</span>Complete methodology &amp; evaluator comments</div><div class="tier-feature"><span class="check">✓</span>Laboratory research report access</div><div class="tier-feature"><span class="check">✓</span>eBook library — all titles</div><div class="tier-feature"><span class="check">✓</span>Full publication archive (digital)</div><div class="tier-feature"><span class="check">✓</span>Premium webinar registration</div><div class="tier-feature"><span class="check">✓</span>Priority access to new content</div>
+      </div>
+      <a href="#" class="tier-btn tier-btn-primary">Subscribe — $99/yr →</a>
+    </div>
+    <div class="tier-card">
+      <div class="tier-name">Print + Digital</div>
+      <div class="tier-price"><strong>$149</strong> / year</div>
+      <div class="tier-features">
+        <div class="tier-feature"><span class="check">✓</span>Everything in Digital</div><div class="tier-feature"><span class="check">✓</span>6 print issues mailed annually</div><div class="tier-feature"><span class="check">✓</span>Printed issue arrives before digital release</div><div class="tier-feature"><span class="check">✓</span>Physical archive access</div><div class="tier-feature"><span class="check">✓</span>Priority customer support</div>
+      </div>
+      <a href="#" class="tier-btn tier-btn-secondary">Subscribe — $149/yr →</a>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:13px;color:var(--text-light);margin-top:20px;">Questions about subscription access? <a href="#" style="color:var(--orange);text-decoration:none;font-weight:600;">Contact us →</a></p>
+</div>
+
+<!-- HOW TO USE DA -->
+<div class="howto-section">
+  <div class="section-label"><div class="section-line"></div><span class="section-eyebrow">Getting the Most Out of DA</span></div>
+  <h2 class="section-title">How Clinicians Use DENTAL ADVISOR</h2>
+  <p class="section-desc">Whether you're evaluating a product before purchasing, earning CE credits, or staying current on clinical research — here's how to navigate.</p>
+  <div class="howto-grid">
+    <div>
+      <h3>Researching a Product</h3>
+      <div class="howto-steps">
+        <div class="howto-step"><div class="step-num-small">1</div><div class="step-text"><strong>Go to Clinical Evaluations</strong> and search by product name, company, or category.</div></div><div class="howto-step"><div class="step-num-small">2</div><div class="step-text"><strong>Filter by rating</strong> to narrow results to 4.5 or 4.0-rated products in your category.</div></div><div class="howto-step"><div class="step-num-small">3</div><div class="step-text"><strong>Check award badges</strong> — Top Award and Long-Term Award winners have demonstrated sustained excellence.</div></div><div class="howto-step"><div class="step-num-small">4</div><div class="step-text"><strong>Read the full evaluation</strong> (subscriber) for methodology, evaluator count, usage count, and detailed findings.</div></div><div class="howto-step"><div class="step-num-small">5</div><div class="step-text"><strong>Compare alternatives</strong> in the same category to make a side-by-side decision.</div></div>
+      </div>
+    </div>
+    <div>
+      <h3>Earning CE Credits</h3>
+      <div class="howto-steps">
+        <div class="howto-step"><div class="step-num-small">1</div><div class="step-text"><strong>Go to Education</strong> and select Webinars to browse available CE courses.</div></div><div class="howto-step"><div class="step-num-small">2</div><div class="step-text"><strong>Register for a live webinar</strong> or access on-demand recordings at your own pace.</div></div><div class="howto-step"><div class="step-num-small">3</div><div class="step-text"><strong>Complete the post-course assessment</strong> to earn your CE certificate (1 credit per webinar).</div></div><div class="howto-step"><div class="step-num-small">4</div><div class="step-text"><strong>Attend a Lab to Lecture event</strong> in your region for in-person CE and live product demonstrations.</div></div><div class="howto-step"><div class="step-num-small">5</div><div class="step-text"><strong>Download CE certificates</strong> directly from your account dashboard.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BECOME AN EVALUATOR -->
+<div class="evaluator-section">
+  <div class="eval-left">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;"><div style="width:28px;height:1px;background:var(--gold);"></div><span style="font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);">Join Our Network</span></div>
+    <h2 class="eval-left h2">Become a Clinical Evaluator</h2>
+    <p>DENTAL ADVISOR evaluations are conducted by practicing dental professionals — dentists, hygienists, and specialists — who use products under real clinical conditions and report their findings independently. If that sounds like you, we'd like to hear from you.</p>
+    <div class="eval-perks">
+      <div class="eval-perk"><span class="perk-check">✓</span>Evaluate new products before they reach the market</div><div class="eval-perk"><span class="perk-check">✓</span>Receive complimentary product samples for evaluation use</div><div class="eval-perk"><span class="perk-check">✓</span>Contribute to research that shapes clinical decision-making across the profession</div><div class="eval-perk"><span class="perk-check">✓</span>Be credited as a DENTAL ADVISOR Clinical Evaluator</div><div class="eval-perk"><span class="perk-check">✓</span>Receive complimentary digital subscription during active evaluation periods</div>
+    </div>
+  </div>
+  <div class="eval-form">
+    <h3>Express Interest</h3>
+    <p class="sub">We'll follow up to discuss fit and availability.</p>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-input" placeholder="Dr. Jane"></div>
+      <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-input" placeholder="Smith"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="jane@dentalgroup.com"></div>
+    <div class="form-group"><label class="form-label">Credentials / Specialty</label>
+      <select class="form-select-input"><option>Select your role</option><option>General Dentist (DDS/DMD)</option><option>Dental Hygienist (RDH)</option><option>Endodontist</option><option>Periodontist</option><option>Prosthodontist</option><option>Orthodontist</option><option>Oral Surgeon</option><option>Pediatric Dentist</option></select>
+    </div>
+    <div class="form-group"><label class="form-label">Practice State</label><input type="text" class="form-input" placeholder="Michigan"></div>
+    <div class="form-group"><label class="form-label">Areas of Clinical Interest</label><input type="text" class="form-input" placeholder="e.g. composites, bonding agents, endodontics…"></div>
+    <button class="form-submit">Submit Interest Form →</button>
+    <p class="form-privacy">We review evaluator applications on a rolling basis and reach out when relevant products become available.</p>
+  </div>
+</div>
+
+<!-- NEWSLETTER + CE -->
+<div class="bottom-section">
+  <div>
+    <div class="section-label"><div class="section-line"></div><span class="section-eyebrow">Stay Connected</span></div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:14px;">Get the eNewsletter — Free</h2>
+    <p style="font-size:14.5px;color:var(--text-mid);line-height:1.75;margin-bottom:24px;">Join thousands of dental professionals who receive DENTAL ADVISOR's eNewsletter — evaluation summaries, award announcements, CE opportunities, and clinical insights, delivered directly to your inbox.</p>
+    <div class="nl-form-card">
+      <h3>Sign Up Free</h3>
+      <p class="sub">No spam. Unsubscribe anytime.</p>
+      <input type="text" class="nl-input" placeholder="First name">
+      <input type="email" class="nl-input" placeholder="Email address">
+      <select class="nl-input" style="color:var(--text-light);"><option>I am a... (select your role)</option><option>General Dentist</option><option>Specialist</option><option>Dental Hygienist</option><option>Dental Student</option><option>Other</option></select>
+      <button class="nl-submit">Subscribe to eNewsletter →</button>
+    </div>
+  </div>
+  <div class="ce-block">
+    <div class="section-label"><div class="section-line"></div><span class="section-eyebrow">Continuing Education</span></div>
+    <h3>Upcoming CE Opportunities</h3>
+    <p>Earn CE credits on your schedule. Our webinars are accredited, clinician-authored, and grounded in DENTAL ADVISOR's independent research findings.</p>
+    <div class="ce-options">
+      <a href="#" class="ce-option"><span class="ce-option-name">My Mouth Works – TMD</span><span class="ce-option-badge">1 CE Credit</span></a><a href="#" class="ce-option"><span class="ce-option-name">My Mouth Works – Sleep Dentistry</span><span class="ce-option-badge">1 CE Credit</span></a><a href="#" class="ce-option"><span class="ce-option-name">My Mouth Works – Crowding &amp; Alignment</span><span class="ce-option-badge">1 CE Credit</span></a><a href="#" class="ce-option"><span class="ce-option-name">Lab to Lecture – Charlotte, NC · May 8</span><span class="ce-option-badge">Live Event</span></a><a href="#" class="ce-option"><span class="ce-option-name">Lab to Lecture – Ann Arbor, MI · Sep 11</span><span class="ce-option-badge">Live Event</span></a><a href="#" class="ce-option"><span class="ce-option-name">Lab to Lecture – Denver, CO · Oct 23</span><span class="ce-option-badge">Live Event</span></a>
+    </div>
+    <a href="#" style="display:inline-block;margin-top:20px;padding:12px 28px;background:var(--navy);color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;">View All CE Opportunities →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="brand-name">Dental Advisor</div>
+      <div class="brand-sub">Independent Research &amp; Evaluations</div>
+      <p>Providing dental professionals with objective, evidence-based product evaluations since 1983.</p>
+      <div class="footer-contact">
+        <div>Ann Arbor, Michigan 48104</div>
+        <div>Call: <a href="tel:7343640944">734.364.0944</a></div>
+        <div>Email: <a href="/cdn-cgi/l/email-protection#95f6fafbfbf0f6e1d5f1f0fbe1f4f9f4f1e3fce6fae7bbf6faf8"><span class="__cf_email__" data-cfemail="a8cbc7c6c6cdcbdce8cccdc6dcc9c4c9ccdec1dbc7da86cbc7c5">[email&#160;protected]</span></a></div>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Content</h4><a href="#">Publication</a><a href="#">Clinical Evaluations</a><a href="#">Research</a><a href="#">Awards</a><a href="#">Education</a></div>
+    <div class="footer-col"><h4>About</h4><a href="#">Our Story</a><a href="#">Our Process</a><a href="#">Our Team</a><a href="#">For Manufacturers</a><a href="#">For Clinicians</a></div>
+    <div class="footer-col"><h4>Account</h4><a href="#">Subscribe</a><a href="#">Log In</a><a href="#">Premium Portal</a><a href="#">Try a Product</a><a href="#">Contact Us</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 DENTAL ADVISOR. All rights reserved.</span>
+    <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a><a href="#">Copyright Policy</a></div>
+  </div>
+</footer>
+<div cl
