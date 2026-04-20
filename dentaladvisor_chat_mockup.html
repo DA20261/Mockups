@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DENTAL ADVISOR — Clinical Research Assistant Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0E2340;
+    --navy-mid: #1B3A6B;
+    --blue: #2B5BA8;
+    --blue-light: #4A7CC9;
+    --gold: #B8963E;
+    --gold-light: #D4AF6A;
+    --cream: #F7F4EF;
+    --white: #FFFFFF;
+    --text: #1A1A1A;
+    --text-mid: #4A4A4A;
+    --text-light: #787878;
+    --border: #D8D2C8;
+    --bubble-bot: #F0F4FA;
+    --bubble-user: #0E2340;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #E8EDF5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  /* ─── INTRO PANEL ─── */
+  .intro-panel {
+    max-width: 380px;
+    flex-shrink: 0;
+  }
+  .intro-panel .da-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .intro-panel .da-sub {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .intro-panel h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .intro-panel h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .intro-panel p {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .use-cases {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .use-case {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--white);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+  .use-case-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+  .icon-clinician { background: #E8F0FB; }
+  .icon-manufacturer { background: #FEF3E2; }
+  .icon-researcher { background: #E8F5E9; }
+  .use-case-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .use-case-text span {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.4;
+  }
+  .powered-by {
+    font-size: 12px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .powered-dot {
+    width: 8px;
+    height: 8px;
+    background: #4CAF50;
+    border-radius: 50%;
+    animation: gpulse 2s infinite;
+  }
+  @keyframes gpulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.5; transform:scale(0.7); }
+  }
+
+  /* ─── CHAT WINDOW ─── */
+  .chat-window {
+    width: 420px;
+    height: 680px;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 32px 80px rgba(14,35,64,0.2), 0 0 0 1px rgba(14,35,64,0.06);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* Header */
+  .chat-header {
+    background: var(--navy);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .chat-header-avatar {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--gold), #8B6914);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+    position: relative;
+  }
+  .chat-header-avatar::after {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 10px;
+    height: 10px;
+    background: #4CAF50;
+    border-radius: 50%;
+    border: 2px solid var(--navy);
+  }
+  .chat-header-info { flex: 1; }
+  .chat-header-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .chat-header-status {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+  }
+  .chat-header-status span {
+    color: #81C784;
+    font-weight: 500;
+  }
+  .chat-header-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .chat-header-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 6px;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  .chat-header-btn:hover { background: rgba(255,255,255,0.2); color: white; }
+
+  /* Audience tabs */
+  .chat-tabs {
+    display: flex;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 0 16px;
+    flex-shrink: 0;
+  }
+  .chat-tab {
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-light);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .chat-tab.active {
+    color: var(--navy);
+    border-bottom-color: var(--gold);
+  }
+  .chat-tab:hover:not(.active) { color: var(--text-mid); }
+
+  /* Messages area */
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    scroll-behavior: smooth;
+  }
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-track { background: transparent; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* Message bubbles */
+  .msg { display: flex; gap: 10px; max-width: 100%; }
+  .msg.user { flex-direction: row-reverse; }
+  .msg-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    align-self: flex-end;
+  }
+  .msg-avatar.bot {
+    background: linear-gradient(135deg, var(--gold), #8B6914);
+    color: var(--white);
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+  }
+  .msg-avatar.user-av {
+    background: var(--navy-mid);
+    color: rgba(255,255,255,0.8);
+    font-size: 11px;
+  }
+  .msg-content { max-width: 80%; display: flex; flex-direction: column; gap: 4px; }
+  .msg.user .msg-content { align-items: flex-end; }
+  .msg-bubble {
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .msg.bot .msg-bubble {
+    background: var(--bubble-bot);
+    color: var(--text);
+    border-bottom-left-radius: 4px;
+  }
+  .msg.user .msg-bubble {
+    background: var(--bubble-user);
+    color: var(--white);
+    border-bottom-right-radius: 4px;
+  }
+  .msg-time {
+    font-size: 10px;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+
+  /* Special message components */
+  .msg-bubble strong { font-weight: 700; }
+  .msg-bubble .rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--gold);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin: 2px 4px 2px 0;
+  }
+  .msg-bubble .product-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .product-card-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--navy-mid), var(--blue));
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .product-card-info { flex: 1; }
+  .product-card-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .product-card-meta {
+    font-size: 11px;
+    color: var(--text-light);
+  }
+  .product-card-rating {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .msg-bubble .source-tag {
+    display: inline-block;
+    background: rgba(43,91,168,0.1);
+    color: var(--blue);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .msg-bubble .source-tag:hover { background: rgba(43,91,168,0.18); }
+  .msg-bubble .upgrade-prompt {
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .upgrade-icon { font-size: 22px; flex-shrink: 0; }
+  .upgrade-text { flex: 1; }
+  .upgrade-text strong {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 2px;
+  }
+  .upgrade-text span {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+  }
+  .upgrade-btn {
+    background: var(--gold);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  /* Typing indicator */
+  .typing-indicator {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+  }
+  .typing-bubbles {
+    background: var(--bubble-bot);
+    border-radius: 16px;
+    border-bottom-left-radius: 4px;
+    padding: 14px 18px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .typing-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--text-light);
+    border-radius: 50%;
+    animation: tdot 1.2s infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes tdot {
+    0%,60%,100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-6px); opacity: 1; }
+  }
+
+  /* Suggested prompts */
+  .suggested-prompts {
+    padding: 0 16px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .prompt-chip {
+    padding: 7px 12px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .prompt-chip:hover { background: var(--navy); color: white; border-color: var(--navy); }
+
+  /* Input area */
+  .chat-input-area {
+    padding: 12px 16px 16px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+    background: var(--white);
+  }
+  .chat-input-wrap {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    background: var(--cream);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 12px;
+    transition: border-color 0.2s;
+  }
+  .chat-input-wrap:focus-within { border-color: var(--blue); }
+  .chat-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    color: var(--text);
+    resize: none;
+    outline: none;
+    line-height: 1.5;
+    max-height: 80px;
+    min-height: 20px;
+  }
+  .chat-input::placeholder { color: var(--text-light); }
+  .chat-send {
+    width: 34px;
+    height: 34px;
+    background: var(--navy);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    font-size: 15px;
+  }
+  .chat-send:hover { background: var(--navy-mid); transform: scale(1.05); }
+  .chat-footer-note {
+    font-size: 10px;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 8px;
+    letter-spacing: 0.03em;
+  }
+
+  /* ─── SECOND DEMO — MANUFACTURER VIEW ─── */
+  .chat-window-2 {
+    width: 420px;
+    height: 680px;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 32px 80px rgba(14,35,64,0.2), 0 0 0 1px rgba(14,35,64,0.06);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* ─── SECTION LABEL ─── */
+  .demo-label {
+    text-align: center;
+    width: 100%;
+    flex-basis: 100%;
+  }
+  .demo-label h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .demo-label p {
+    font-size: 14px;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .demos-row {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  .demo-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .demo-col-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .demo-col-label::before,
+  .demo-col-label::after {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Scrollbar for chat */
+  .chat-messages { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+</style>
+</head>
+<body>
+
+<div class="demo-label">
+  <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">DENTAL ADVISOR</div>
+  <h2>Clinical Research Assistant — Concept Mockup</h2>
+  <p>Two views showing how the chat experience differs for a clinician vs. a manufacturer. All answers draw exclusively from indexed DENTAL ADVISOR content — evaluations, research reports, publications, and awards.</p>
+</div>
+
+<div class="demos-row">
+
+  <!-- ═══ CLINICIAN VIEW ═══ -->
+  <div class="demo-col">
+    <div class="demo-col-label">Clinician View</div>
+    <div class="chat-window">
+
+      <!-- Header -->
+      <div class="chat-header">
+        <div class="chat-header-avatar">DA</div>
+        <div class="chat-header-info">
+          <div class="chat-header-name">Clinical Research Assistant</div>
+          <div class="chat-header-status">Powered by DENTAL ADVISOR · <span>Online</span></div>
+        </div>
+        <div class="chat-header-actions">
+          <button class="chat-header-btn" title="Minimize">−</button>
+          <button class="chat-header-btn" title="Close">✕</button>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="chat-tabs">
+        <div class="chat-tab active">🦷 I'm a Clinician</div>
+        <div class="chat-tab">🏭 I'm a Manufacturer</div>
+        <div class="chat-tab">🎓 Education & CE</div>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-messages" id="clinicianMessages">
+
+        <!-- Bot welcome -->
+        <div class="msg bot">
+          <div class="msg-avatar bot">DA</div>
+          <div class="msg-content">
+            <div class="msg-bubble">
+              👋 Welcome! I'm the DENTAL ADVISOR Research Assistant.<br><br>
+              I have access to <strong>40+ years</strong> of independent clinical evaluations, laboratory research, and product ratings. Ask me anything about a product, category, or clinical topic — I'll pull directly from our findings.
+            </div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+
+        <!-- User question 1 -->
+        <div class="msg user">
+          <div class="msg-avatar user-av">Dr</div>
+          <div class="msg-content">
+            <div class="msg-bubble">What bulk fill composites have you evaluated and what were the ratings?</div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+
+        <!-- Bot response 1 -->
+        <div class="msg bot">
+          <div class="msg-avatar bot">DA</div>
+          <div class="msg-content">
+            <div class="msg-bubble">
+              Great question. We've evaluated several bulk fill composites. Here are our top-rated findings:
+
+              <div class="product-card">
+                <div class="product-card-img">🦷</div>
+                <div class="product-card-info">
+                  <div class="product-card-name">3M™ Filtek™ One Bulk Fill</div>
+                  <div class="product-card-meta">Solventum · Composite · 2018–2026</div>
+                </div>
+                <div class="product-card-rating">⭐ 4.5+</div>
+              </div>
+
+              <div class="product-card">
+                <div class="product-card-img">🦷</div>
+                <div class="product-card-info">
+                  <div class="product-card-name">Visalys® Bulk Flow</div>
+                  <div class="product-card-meta">Kettenbach · Composite · 2026</div>
+                </div>
+                <div class="product-card-rating">⭐ 4.0</div>
+              </div>
+
+              Filtek One has received our <strong>Preferred Product Award</strong> every year since 2018 — that kind of consistency is rare and worth noting clinically.
+              <br><br>
+              <a class="source-tag" href="#">📄 View Full Evaluation — Filtek One</a>
+              <a class="source-tag" href="#">📄 View Full Evaluation — Visalys Bulk Flow</a>
+            </div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+
+        <!-- User question 2 -->
+        <div class="msg user">
+          <div class="msg-avatar user-av">Dr</div>
+          <div class="msg-content">
+            <div class="msg-bubble">How does Filtek One compare to Visalys in terms of handling?</div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+
+        <!-- Bot response 2 — gated -->
+        <div class="msg bot">
+          <div class="msg-avatar bot">DA</div>
+          <div class="msg-content">
+            <div class="msg-bubble">
+              Based on our evaluations, both scored well for handling, but our clinicians noted some differences worth knowing:
+              <br><br>
+              <strong>Filtek One</strong> was consistently praised for its low stickiness and excellent sculptability across multiple evaluators over several years.
+              <br><br>
+              The detailed handling breakdown — including stickiness scores, adaptation to cavity walls, and clinician preference rankings — is available in the full evaluation report.
+
+              <div class="upgrade-prompt">
+                <div class="upgrade-icon">🔒</div>
+                <div class="upgrade-text">
+                  <strong>Full comparison available to subscribers</strong>
+                  <span>Unlock detailed ratings, clinician comments & side-by-side comparisons</span>
+                </div>
+                <button class="upgrade-btn">Subscribe →</button>
+              </div>
+
+              <a class="source-tag" href="#">📄 Source: Vol. 42-06 · Advances in Digital Dentistry</a>
+            </div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Suggested prompts -->
+      <div class="suggested-prompts">
+        <div class="prompt-chip">Best bonding agents 2026?</div>
+        <div class="prompt-chip">Top awarded cements?</div>
+        <div class="prompt-chip">Earn CE credits</div>
+      </div>
+
+      <!-- Input -->
+      <div class="chat-input-area">
+        <div class="chat-input-wrap">
+          <textarea class="chat-input" placeholder="Ask about a product, category, or clinical topic..." rows="1"></textarea>
+          <button class="chat-send">➤</button>
+        </div>
+        <div class="chat-footer-note">Answers sourced exclusively from DENTAL ADVISOR research · <a href="#" style="color:var(--blue);text-decoration:none;">Learn more</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MANUFACTURER VIEW ═══ -->
+  <div class="demo-col">
+    <div class="demo-col-label">Manufacturer View</div>
+    <div class="chat-window">
+
+      <!-- Header -->
+      <div class="chat-header">
+        <div class="chat-header-avatar">DA</div>
+        <div class="chat-header-info">
+          <div class="chat-header-name">Clinical Research Assistant</div>
+          <div class="chat-header-status">Powered by DENTAL ADVISOR · <span>Online</span></div>
+        </div>
+        <div class="chat-header-actions">
+          <button class="chat-header-btn" title="Minimize">−</button>
+          <button class="chat-header-btn" title="Close">✕</button>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="chat-tabs">
+        <div class="chat-tab">🦷 I'm a Clinician</div>
+        <div class="chat-tab active">🏭 I'm a Manufacturer</div>
+        <div class="chat-tab">🎓 Education & CE</div>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-messages">
+
+        <!-- Bot welcome — manufacturer specific -->
+        <div class="msg bot">
+          <div class="msg-avatar bot">DA</div>
+          <div class="msg-content">
+            <div class="msg-bubble">
+              Welcome! As a manufacturer, I can help you:
+              <br><br>
+              🔍 <strong>Research our evaluations</strong> in your product category<br>
+              📊 <strong>Understand our rating system</strong> and award criteria<br>
+              📋 <strong>Learn how to submit</strong> a product for evaluation<br>
+              🏆 <strong>Explore what award winners</strong> have in common<br><br>
+              What would you like to know?
+            </div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+
+        <!-- User question 1 -->
+        <div class="msg user">
+          <div class="msg-avatar user-av">Mfr</div>
+          <div class="msg-content">
+            <div class="msg-bubble">We make a universal adhesive. Has DENTAL ADVISOR evaluated products in that category? What ratings have they received?</div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+
+        <!-- Bot response 1 -->
+        <div class="msg bot">
+          <div class="msg-avatar bot">DA</div>
+          <div class="msg-content">
+            <div class="msg-bubble">
+              Yes — bonding agents and universal adhesives are one of our most-evaluated categories. Here's a snapshot of recent findings:
+
+              <div class="product-card">
+                <div class="product-card-img">🧪</div>
+                <div class="product-card-info">
+                  <div class="product-card-name">CLEARFIL™ Universal Bond Quick 2</div>
+                  <div class="product-card-meta">Kuraray · Universal Adhesive · 2025</div>
+                </div>
+                <div class="product-card-rating">⭐ 4.5</div>
+              </div>
+
+              <div class="product-card">
+                <div class="product-card-img">🧪</div>
+                <div class="product-card-info">
+                  <div class="product-card-name">OptiBond™ Universal 360</div>
+                  <div class="product-card-meta">Kerr · Universal Adhesive · 2025</div>
+                </div>
+                <div class="product-card-rating">⭐ 4.5</div>
+              </div>
+
+              The category is competitive — several products are earning 4+ ratings. A strong dentin bond strength result from our biomaterials lab combined with positive clinician handling feedback tends to correlate with Top Product recognition.
+              <br><br>
+              <a class="source-tag" href="#">📄 Bonding Agent Category Overview</a>
+            </div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+
+        <!-- User question 2 -->
+        <div class="msg user">
+          <div class="msg-avatar user-av">Mfr</div>
+          <div class="msg-content">
+            <div class="msg-bubble">How do we submit our product for evaluation?</div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+
+        <!-- Bot response 2 -->
+        <div class="msg bot">
+          <div class="msg-avatar bot">DA</div>
+          <div class="msg-content">
+            <div class="msg-bubble">
+              Great question. Here's how our process works:
+              <br><br>
+              <strong>1. Initial Contact</strong> — Reach out via our Manufacturers page or contact form. Our team will confirm category fit and current evaluation capacity.
+              <br><br>
+              <strong>2. Product Submission</strong> — You ship product samples to our Ann Arbor lab. Our team determines whether clinical evaluation, laboratory testing, or both are appropriate.
+              <br><br>
+              <strong>3. Independent Evaluation</strong> — Our clinicians and researchers evaluate independently. You have no influence over findings or ratings.
+              <br><br>
+              <strong>4. Publication</strong> — Results are published in DENTAL ADVISOR regardless of outcome. This is what makes our ratings credible to clinicians.
+              <br><br>
+              Ready to start?
+
+              <div class="upgrade-prompt">
+                <div class="upgrade-icon">📬</div>
+                <div class="upgrade-text">
+                  <strong>Submit your product for evaluation</strong>
+                  <span>Connect with our team to discuss your product category</span>
+                </div>
+                <button class="upgrade-btn">Contact Us →</button>
+              </div>
+            </div>
+            <div class="msg-time">Just now</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Suggested prompts -->
+      <div class="suggested-prompts">
+        <div class="prompt-chip">What do Top awards require?</div>
+        <div class="prompt-chip">Evaluation timeline?</div>
+        <div class="prompt-chip">Lab testing process</div>
+      </div>
+
+      <!-- Input -->
+      <div class="chat-input-area">
+        <div class="chat-input-wrap">
+          <textarea class="chat-input" placeholder="Ask about evaluations, submissions, or our process..." rows="1"></textarea>
+          <button class="chat-send">➤</button>
+        </div>
+        <div class="chat-footer-note">Answers sourced exclusively from DENTAL ADVISOR research · <a href="#" style="color:var(--blue);text-decoration:none;">Learn more</a></div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ─── BOTTOM NOTES ─── -->
+<div class="demo-label" style="margin-top:20px;">
+  <p style="font-size:13px;color:var(--text-light);max-width:700px;margin:0 auto;line-height:1.8;">
+    <strong style="color:var(--navy);">How it works technically:</strong> All responses are grounded exclusively in indexed DENTAL ADVISOR content — no hallucination of ratings or findings. Free users receive summaries; subscribers unlock full evaluations, detailed comparisons, and clinician commentary. The subscription gate becomes a natural, low-friction conversion moment inside an active conversation.
+  </p>
+</div>
+
+<script>
+  // Auto-scroll messages to bottom
+  document.querySelectorAll('.chat-messages').forEach(el => {
+    el.scrollTop = el.scrollHeight;
+  });
+
+  // Tab switching
+  document.querySelectorAll('.chat-tabs').forEach(tabGroup => {
+    tabGroup.querySelectorAll('.chat-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabGroup.querySelectorAll('.chat-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  });
+
+  // Auto-resize textareas
+  document.querySelectorAll('.chat-input').forEach(ta => {
+    ta.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 80) + 'px';
+    });
+  });
+</script>
+
+</body>
+</html>
