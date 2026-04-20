@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DENTAL ADVISOR — Website Redesign Mockups</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#203552;--navy-mid:#2e4a6e;--orange:#E4762E;
+  --gold:#F8C569;--cream:#F7F4EF;--white:#fff;
+  --border:#DDD8D0;--text:#1A1A1A;--text-mid:#4A4A4A;--text-light:#787878;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;}
+
+/* HEADER */
+header{background:var(--navy);padding:40px 48px 36px;}
+.header-inner{max-width:960px;margin:0 auto;}
+.brand{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+h1{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:12px;}
+.subtitle{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.65;max-width:560px;margin-bottom:24px;}
+.header-meta{display:flex;gap:24px;flex-wrap:wrap;}
+.meta-pill{display:flex;align-items:center;gap:7px;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:.04em;}
+.meta-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;}
+
+/* MAIN */
+main{max-width:960px;margin:0 auto;padding:48px 48px 80px;}
+
+/* SECTION LABELS */
+.section-label{display:flex;align-items:center;gap:10px;margin-bottom:20px;margin-top:40px;}
+.section-label:first-child{margin-top:0;}
+.sl-line{width:24px;height:2px;background:var(--orange);}
+.sl-text{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);}
+
+/* PAGE CARDS */
+.pages-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.page-card{background:var(--white);border:1px solid var(--border);border-radius:4px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:all .22s;}
+.page-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(32,53,82,0.13);border-color:var(--orange);}
+.card-top{height:6px;}
+.card-top.navy{background:var(--navy);}
+.card-top.orange{background:var(--orange);}
+.card-top.gold{background:var(--gold);}
+.card-top.green{background:#2a7a4a;}
+.card-body{padding:22px 24px;flex:1;display:flex;flex-direction:column;}
+.card-icon{font-size:24px;margin-bottom:12px;}
+.card-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.card-desc{font-size:13px;color:var(--text-light);line-height:1.6;flex:1;margin-bottom:14px;}
+.card-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px;background:rgba(32,53,82,0.07);color:var(--navy);}
+.tag.new{background:rgba(228,118,46,0.12);color:var(--orange);}
+.card-cta{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:6px;margin-top:auto;}
+
+/* NOTES SECTION */
+.notes-box{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:28px 32px;margin-top:40px;}
+.notes-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:16px;}
+.note-row{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13.5px;color:var(--text-mid);line-height:1.5;}
+.note-row:last-child{border-bottom:none;}
+.note-icon{flex-shrink:0;font-size:15px;}
+
+/* FOOTER */
+footer{background:var(--navy);padding:24px 48px;text-align:center;}
+footer p{font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:.04em;}
+
+@media(max-width:680px){
+  header{padding:28px 20px;}
+  h1{font-size:28px;}
+  main{padding:32px 20px 60px;}
+  .pages-grid{grid-template-columns:1fr;}
+  footer{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">Dental Advisor</div>
+    <h1>Website Redesign<br>Mockup Presentation</h1>
+    <p class="subtitle">A complete visual redesign of dentaladvisor.com — all pages built with the updated brand palette, new UX patterns, mobile responsiveness, and revised content architecture.</p>
+    <div class="header-meta">
+      <div class="meta-pill"><span class="meta-dot"></span>11 Pages</div>
+      <div class="meta-pill"><span class="meta-dot"></span>Mobile Responsive</div>
+      <div class="meta-pill"><span class="meta-dot"></span>Interactive Prototypes</div>
+      <div class="meta-pill"><span class="meta-dot"></span>April 2026</div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- CORE PAGES -->
+  <div class="section-label"><div class="sl-line"></div><span class="sl-text">Core Pages</span></div>
+  <div class="pages-grid">
+
+    <a href="dentaladvisor_homepage_FINAL.html" class="page-card">
+      <div class="card-top navy"></div>
+      <div class="card-body">
+        <div class="card-icon">🏠</div>
+        <div class="card-title">Homepage</div>
+        <p class="card-desc">Hero with Dr. Bunek, trust bar, evaluations grid, Try-a-Product CTA, awards section, and newsletter signup. Includes sponsored ads.</p>
+        <div class="card-tags"><span class="tag">Hero Image</span><span class="tag">Sponsored Ads</span><span class="tag new">Updated</span></div>
+        <span class="card-cta">View Page →</span>
+      </div>
+    </a>
+
+    <a href="dentaladvisor_publication_mockup.html" class="page-card">
+      <div class="card-top navy"></div>
+      <div class="card-body">
+        <div class="card-icon">📰</div>
+        <div class="card-title">Publication</div>
+        <p class="card-desc">Real publication covers hero, issue gate design, latest issue section, archive grid with year filters and issue descriptions.</p>
+        <div class="card-tags"><span class="tag">Real Images</span><span class="tag">Issue Gate</span></div>
+        <span class="card-cta">View Page →</span>
+      </div>
+    </a>
+
+    <a href="dentaladvisor_evaluations_REDESIGN.html" class="page-card">
+      <div class="card-top orange"></div>
+      <div class="card-body">
+        <div class="card-icon">🔬</div>
+        <div class="card-title">Clinical Evaluations</div>
+        <p class="card-desc">Full redesign — sticky search dock with filters, left sidebar categories, product cards replacing the table, rating legend, and sponsored ads.</p>
+        <div class="card-tags"><span class="tag">Search + Filter</span><span class="tag">Sidebar</span><span class="tag new">Redesigned</span></div>
+        <span class="card-cta">View Page →</span>
+      </div>
+    </a>
+
+    <a href="dentaladvisor_product_clarity.html" class="page-card">
+      <div class="card-top orange"></div>
+      <div class="card-body">
+        <div class="card-icon">🦷</div>
+        <div class="card-title">Product Page (Example)</div>
+        <p class="card-desc">Clarity™ Aligners — all affiliated assets on one scrolling page: evaluation, research report, award history accordion, education assets, case report, and related products.</p>
+        <div class="card-tags"><span class="tag">Company Link</span><span class="tag">Award Accordion</span><span class="tag new">New Page</span></div>
+        <span class="card-cta">View Page →</span>
+      </div>
+    </a>
+
+    <a href="dentaladvisor_research_mockup.html" class="page-card">
+      <div class="card-top navy"></div>
+      <div class="card-body">
+        <div class="card-icon">🧪</div>
+        <div class="card-title">Research</div>
+        <p class="card-desc">Visually redesigned with bold split-panel two-type explainer, hero stat chips, what-we-test grid, and editorial report cards.</p>
+        <div class="card-tags"><span class="tag">Visual Overhaul</span><span class="tag new">Redesigned</span></div>
+        <span class="card-cta">View Page →</span>
+      </div>
+    </a>
+
+    <a href="dentaladvisor_awards_mockup.html" class="page-card">
+      <div class="card-top gold"></div>
+      <div class="card-body">
+        <div class="card-icon">🏆</div>
+        <div class="card-title">Awards</div>
+        <p class="card-desc">Award medals hero, all 6 award types explained with descriptions, featured multi-year winners with year counts.</p>
+        <div class="card-tags"><span class="tag">Real Images</span><span class="tag">Multi-Year Badges</span></div>
+        <span class="card-cta">View Page →</span>
+      </div>
+    </a>
+
+    <a href="dentaladvisor_education_mockup.html" class="page-card">
+      <div class="card-top green"></div>
+      <div class="card-body">
+        <div class="card-icon">🎓</div>
+        <div class="card-title">Education</div>
+        <p class="card-desc">Lab to Lecture hero, CE credits featured prominently, case reports, podcasts, webinar list, and live event schedule with real 2026 dates.</p>
+        <div class="card-tags"><span class="tag">CE Credits</span><span class="tag">Live Events</span></div>
+        <span class="card-cta">View Page →</span>
+      </div>
+    </a>
+
+    <a href="dentaladvisor_about_mockup.html" class="page-card">
+      <div class="card-top navy"></div>
+      <div class="card-body">
+        <div class="card-icon">👥</div>
+        <div class="card-title">About Us</div>
+        <p class="card-desc">Team photo hero, independence story, Dr. Bunek quote, Dr. Powers full feature section with photo and career timeline, team grid.</p>
+        <div class="card-tags"><span class="tag">Dr. Powers Section</span><span class="tag new">Updated</span></div>
+        <span class="card-cta">View Page →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- NEW PAGES -->
+  <div class="section-label"><div class="sl-line"></div><span class="sl-text">New Pages</span></div>
+  <div class="pages-grid">
+
+    <a href="dentaladvisor_manufacturers.html" class="page-card">
+      <div class="card-top orange"></div>
+      <div class="card-body">
+        <div class="card-icon">🏭</div>
+        <div class="card-title">For Manufacturers</div>
+        <p class="card-desc">Full conversion page — why DA's independence is the value prop, 5-step process, what you receive, eligibility checklist, rating scale explained, FAQs, and submission form.</p>
+        <div class="card-tags"><span class="tag new">New Page</span><span class="tag">Rating System</span><span class="tag">Submit Form</span></div>
+        <span class="card-cta">View Page →</span>
+      </div>
+    </a>
+
+    <a href="dentaladvisor_clinicians.html" class="page-card">
+      <div class="card-top green"></div>
+      <div class="card-body">
+        <div class="card-icon">🦷</div>
+        <div class="card-title">For Clinicians</div>
+        <p class="card-desc">Orientation hub for dental professionals — what's available, subscription tiers, how to use DA, become an evaluator form, newsletter signup, and CE opportunities.</p>
+        <div class="card-tags"><span class="tag new">New Page</span><span class="tag">Subscription Tiers</span><span class="tag">Evaluator Signup</span></div>
+        <span class="card-cta">View Page →</span>
+      </div>
+    </a>
+
+    <a href="dentaladvisor_chat_mockup.html" class="page-card">
+      <div class="card-top navy"></div>
+      <div class="card-body">
+        <div class="card-icon">💬</div>
+        <div class="card-title">Clinical Research Assistant</div>
+        <p class="card-desc">AI chat interface demo — shows clinician vs manufacturer routing, product search with subscription gate, and source citations.</p>
+        <div class="card-tags"><span class="tag new">New Concept</span><span class="tag">AI Assistant</span></div>
+        <span class="card-cta">View Page →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- DESIGN NOTES -->
+  <div class="notes-box">
+    <div class="notes-title">Design Notes for Review</div>
+    <div class="note-row"><span class="note-icon">🎨</span>Brand palette: Navy #203552 · Orange #E4762E · Gold #F8C569 · Charcoal #55565A · Fonts: Playfair Display + DM Sans</div>
+    <div class="note-row"><span class="note-icon">📱</span>All pages are mobile responsive — resize your browser or view on a phone to see the mobile layout</div>
+    <div class="note-row"><span class="note-icon">🔍</span>Search bar becomes sticky as you scroll down each page — it locks below the nav</div>
+    <div class="note-row"><span class="note-icon">🔒</span>Subscriber gate is demonstrated on the Product Page — full evaluation text is blurred with a subscribe prompt</div>
+    <div class="note-row"><span class="note-icon">📅</span>Award history accordion on the Product Page demonstrates Option C — badge + expandable year-by-year history</div>
+    <div class="note-row"><span class="note-icon">💰</span>Sponsored ads on Homepage and Clinical Evaluations are clearly flagged as "Sponsored" to maintain editorial independence</div>
+    <div class="note-row"><span class="note-icon">🖼️</span>Product images are placeholders — real product photography would be supplied by manufacturers</div>
+    <div class="note-row"><span class="note-icon">⚡</span>These are static HTML mockups — interactive elements (search, filters) would be powered by Webflow CMS in the live build</div>
+  </div>
+
+</main>
+
+<footer>
+  <p>DENTAL ADVISOR Website Redesign · Confidential Mockup · April 2026</p>
+</footer>
+
+</body>
+</html>
